@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import 'rxjs/add/operator/map';
-import { Observable, Subscription } from 'rxjs';
+// import 'rxjs/add/operator/map';
+import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Exercise } from './exercise.model';
@@ -26,15 +26,17 @@ export class TrainingService {
       this.db
         .collection<Exercise>('availableExercises')
         .snapshotChanges()
-        .map((docArray) => {
-          // throw new Error();
-          return docArray.map((doc) => {
-            return {
-              id: doc.payload.doc.id,
-              ...doc.payload.doc.data(),
-            };
-          });
-        })
+        .pipe(
+          map((docArray) => {
+            // throw new Error();
+            return docArray.map((doc) => {
+              return {
+                id: doc.payload.doc.id,
+                ...doc.payload.doc.data(),
+              };
+            });
+          })
+        )
         .subscribe(
           (exercises: Exercise[]) => {
             this.uiService.loadingStateChanged.next(false);
