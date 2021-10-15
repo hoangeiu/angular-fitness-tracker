@@ -10,7 +10,7 @@ Some main high concepts: many parts of Angular, implement Angular Material to st
 
 [Udemy Course](https://www.udemy.com/course/angular-full-app-with-angular-material-angularfire-ngrx/) - Last Udemy updated 5/2021
 
-[Trello](https://trello.com/b/Z8EjRWWb) 
+[Trello](https://trello.com/b/Z8EjRWWb) (privated) 16h37m
 
 
 
